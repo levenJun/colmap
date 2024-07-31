@@ -290,7 +290,7 @@ IncrementalMapperController::InitializeReconstruction(
       "Initializing with image pair #%d and #%d", image_id1, image_id2);
   mapper.RegisterInitialImagePair(
       mapper_options, two_view_geometry, image_id1, image_id2);
-
+  //sfm稀疏重建,执行全局BA
   LOG(INFO) << "Global bundle adjustment";
   mapper.AdjustGlobalBundle(mapper_options, options_->GlobalBundleAdjustment());
   reconstruction.Normalize();
