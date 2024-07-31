@@ -86,6 +86,7 @@ int ShowHelp(
 
 }  // namespace
 
+//主函数入口
 int main(int argc, char** argv) {
   colmap::InitializeGlog(argv);
 #if defined(COLMAP_GUI_ENABLED)
@@ -138,6 +139,48 @@ int main(int argc, char** argv) {
   commands.emplace_back("vocab_tree_builder", &colmap::RunVocabTreeBuilder);
   commands.emplace_back("vocab_tree_matcher", &colmap::RunVocabTreeMatcher);
   commands.emplace_back("vocab_tree_retriever", &colmap::RunVocabTreeRetriever);
+
+  // std::vector<std::pair<std::string, command_func_t>> commands;
+  // commands.emplace_back("gui", &RunGraphicalUserInterface);   //调用可视化接口
+  // commands.emplace_back("automatic_reconstructor", &RunAutomaticReconstructor);  //调用自动重建算法
+  // commands.emplace_back("bundle_adjuster", &RunBundleAdjuster);  //只运行全局BA ？ input output ?
+  // commands.emplace_back("color_extractor", &RunColorExtractor);  //提取重建后三维点的平均颜色
+  // commands.emplace_back("database_creator", &RunDatabaseCreator); //创建一个全局的数据库
+  // commands.emplace_back("database_merger", &RunDatabaseMerger);  //运行数据库融合，但是这里融合的是什么东西？
+  // commands.emplace_back("delaunay_mesher", &RunDelaunayMesher);  //使用Delaunay三角剖分对稀疏和稠密点云进行网格划分
+  // commands.emplace_back("exhaustive_matcher", &RunExhaustiveMatcher);  //计算匹配关系
+  // commands.emplace_back("feature_extractor", &RunFeatureExtractor); //提取特征点
+  // commands.emplace_back("feature_importer", &RunFeatureImporter);    //导入特征点？ 如何可以导入匹配关系
+  // commands.emplace_back("hierarchical_mapper", &RunHierarchicalMapper); //分层次的进行三维重建，先重建子地图，重建子地图之后，进行融合 
+  // commands.emplace_back("image_deleter", &RunImageDeleter); //删除某张图片
+  // commands.emplace_back("image_filterer", &RunImageFilterer);  //对图片进行滤除
+  // commands.emplace_back("image_rectifier", &RunImageRectifier); //立体校正相机，对图片进行去畸变 ？？
+  // commands.emplace_back("image_registrator", &RunImageRegistrator); //在地图点中注册一张新的图片
+  // commands.emplace_back("image_undistorter", &RunImageUndistorter); //对图片进行去畸变，并且导出一些格式以便于适合PMVS
+  // commands.emplace_back("image_undistorter_standalone",
+  //                       &RunImageUndistorterStandalone);  //单独的去畸变 ？
+  // commands.emplace_back("mapper", &RunMapper);   //稀疏的三维重建
+  // commands.emplace_back("matches_importer", &RunMatchesImporter);  //导入匹配关系，这
+  // commands.emplace_back("model_aligner", &RunModelAligner);   //运行模型注册？ 给定当前的相机位姿点？
+  // commands.emplace_back("model_analyzer", &RunModelAnalyzer);  //打印当前统计的点
+  // commands.emplace_back("model_converter", &RunModelConverter);  //将模型转化为对应的格式
+  // commands.emplace_back("model_merger", &RunModelMerger);   //融合不同模型
+  // commands.emplace_back("model_orientation_aligner",
+  //                       &RunModelOrientationAligner);
+  // commands.emplace_back("patch_match_stereo", &RunPatchMatchStereo);
+  // commands.emplace_back("point_filtering", &RunPointFiltering);  //三维点的过滤
+  // commands.emplace_back("point_triangulator", &RunPointTriangulator);
+  // commands.emplace_back("poisson_mesher", &RunPoissonMesher);
+  // commands.emplace_back("project_generator", &RunProjectGenerator);  //生成工程文件
+  // commands.emplace_back("rig_bundle_adjuster", &RunRigBundleAdjuster);  //BA 这个和前面BA的区别？
+  // commands.emplace_back("sequential_matcher", &RunSequentialMatcher);
+  // commands.emplace_back("spatial_matcher", &RunSpatialMatcher);
+  // commands.emplace_back("stereo_fusion", &RunStereoFuser);
+  // commands.emplace_back("transitive_matcher", &RunTransitiveMatcher);
+  // commands.emplace_back("vocab_tree_builder", &RunVocabTreeBuilder);
+  // commands.emplace_back("vocab_tree_matcher", &RunVocabTreeMatcher);
+  // commands.emplace_back("vocab_tree_retriever", &RunVocabTreeRetriever);
+
 
   if (argc == 1) {
     return ShowHelp(commands);

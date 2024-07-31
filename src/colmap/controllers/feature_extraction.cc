@@ -162,6 +162,7 @@ class SiftFeatureExtractorThread : public Thread {
   }
 
  private:
+  //特征提取线程主函数
   void Run() override {
     if (sift_options_.use_gpu) {
 #if !defined(COLMAP_CUDA_ENABLED)
@@ -189,7 +190,7 @@ class SiftFeatureExtractorThread : public Thread {
       if (input_job.IsValid()) {
         auto& image_data = input_job.Data();
 
-        if (image_data.status == ImageReader::Status::SUCCESS) {
+        if (image_data.status == ImageReader::Status::SUCCESS) {//sift特征提取核心入口
           if (extractor->Extract(image_data.bitmap,
                                  &image_data.keypoints,
                                  &image_data.descriptors)) {
